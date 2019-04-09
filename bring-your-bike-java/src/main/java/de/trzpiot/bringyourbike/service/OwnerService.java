@@ -16,8 +16,8 @@ public class OwnerService {
         this.bikeRepository = bikeRepository;
     }
 
-    public Long addBike(Bike bike) {
-        return bikeRepository.save(bike).getId();
+    public Bike addBike(Bike bike) {
+        return bikeRepository.save(bike);
     }
 
     public void updateBike(Bike bike) {
@@ -27,7 +27,7 @@ public class OwnerService {
     public Bike getOneBike(Long id) {
         return bikeRepository.getOne(id);
     }
-    
+
     public List<Bike> getAllBikes() {
         return bikeRepository.findAll();
     }
