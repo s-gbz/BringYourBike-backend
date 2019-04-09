@@ -1,5 +1,8 @@
 package de.trzpiot.bringyourbike.service;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class LightService {
     static {
         System.loadLibrary("bringyourbike");

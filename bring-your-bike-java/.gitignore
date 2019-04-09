@@ -257,4 +257,6 @@ gradle-app.setting
 ### Gradle Patch ###
 **/build/
 
+application.properties
+
 # End of https://www.gitignore.io/api/c++,java,cmake,linux,macos,gradle,windows,intellij,visualstudiocode
