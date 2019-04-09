@@ -15,6 +15,7 @@ public class Bike {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Long pin;
     private String ownerName;
     private String email;
     private String model;

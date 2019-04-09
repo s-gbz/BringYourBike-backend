@@ -11,6 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 public class BikeResource {
     private Long id;
+    private Long pin;
     private String ownerName;
     private String email;
     private String model;

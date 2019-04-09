@@ -6,7 +6,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.transaction.Transactional;
 
@@ -23,9 +25,9 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @GetMapping("/bike-status/{id}")
-    public ResponseEntity<BikeResource> getBikeStatus(@PathVariable Long id) {
-        return new ResponseEntity<>(convertToResource(customerService.getOneBike(id)), HttpStatus.OK);
+    @GetMapping("/bike-status/{pin}")
+    public ResponseEntity<BikeResource> getBikeStatus(@PathVariable Long pin) {
+        return new ResponseEntity<>(convertToResource(customerService.getBikeByPin(pin)), HttpStatus.OK);
     }
 
     private BikeResource convertToResource(Bike bike) {
