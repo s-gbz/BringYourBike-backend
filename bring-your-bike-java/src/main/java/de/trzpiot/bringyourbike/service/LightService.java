@@ -1,11 +1,8 @@
 package de.trzpiot.bringyourbike.service;
 
-import org.springframework.stereotype.Service;
-
-@Service
 public class LightService {
     static {
-        System.loadLibrary("bulbbattle");
+        System.loadLibrary("bringyourbike");
     }
 
     public native void switchOn(String bridgeIp, String bridgeUsername, long lightId);
