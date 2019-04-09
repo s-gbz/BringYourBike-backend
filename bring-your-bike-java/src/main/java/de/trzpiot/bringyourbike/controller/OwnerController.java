@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/owner")
 @Transactional
