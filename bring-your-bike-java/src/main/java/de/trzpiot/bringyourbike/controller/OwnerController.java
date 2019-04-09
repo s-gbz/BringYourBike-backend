@@ -32,9 +32,8 @@ public class OwnerController {
     }
 
     @PostMapping("/update-bike")
-    @ResponseStatus(HttpStatus.OK)
-    public void updateBike(@RequestBody BikeResource resource) {
-        ownerService.updateBike(convertToEntity(resource));
+    public ResponseEntity<Boolean> updateBike(@RequestBody BikeResource resource) {
+        return new ResponseEntity<>(ownerService.updateBike(convertToEntity(resource)), HttpStatus.OK);
     }
 
     @GetMapping("/get-bike/{pin}")

@@ -37,14 +37,15 @@ public class OwnerService {
         return bikeRepository.save(bike);
     }
 
-    public void updateBike(Bike bike) {
+    public boolean updateBike(Bike bike) {
         Optional<Bike> bikeInDatabase = bikeRepository.getBikeByPin(bike.getPin());
 
         if (bikeInDatabase.isPresent()) {
             lightService.switchOn(BRIDGE_IP, BRIDGE_USERNAME, LIGHT_ID);
             lightService.setBrightness(BRIDGE_IP, BRIDGE_USERNAME, LIGHT_ID, 255);
             setColor(bike.getPriority());
-            bikeRepository.save(bike);
+            Bike updatedBike = bikeRepository.save(bike);
+            return updatedBike.equals(bike);
         } else {
             throw new BikeNotFoundException(String.format("Bike with PIN '%s' not found", bike.getPin()));
         }
