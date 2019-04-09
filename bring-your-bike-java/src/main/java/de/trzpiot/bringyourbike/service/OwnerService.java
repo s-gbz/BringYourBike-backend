@@ -24,7 +24,12 @@ public class OwnerService {
     }
 
     public void updateBike(Bike bike) {
-        bikeRepository.save(bike);
+        Optional<Bike> bikeInDatabase = bikeRepository.getBikeByPin(bike.getPin());
+
+        if (bikeInDatabase.isPresent())
+            bikeRepository.save(bike);
+        else
+            throw new BikeNotFoundException(String.format("Bike with PIN '%s' not found", bike.getPin()));
     }
 
     public Bike getBikeByPin(Long pin) {
