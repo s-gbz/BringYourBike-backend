@@ -13,8 +13,8 @@ public class Bike {
     private String ownerName;
     private String email;
     private String model;
-    private long priority;
-    private short status;
+    private Long priority;
+    private Short status;
 
     @OneToMany(mappedBy = "bike")
     private List<Issue> issues;

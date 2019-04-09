@@ -8,9 +8,9 @@ import javax.persistence.*;
 @Entity
 public class Issue {
     @Id
-    private long id;
-    private long number;
-    private boolean fixed;
+    private Long id;
+    private Long number;
+    private Boolean fixed;
 
     @ManyToOne
     @JoinColumn(name = "bike_id")
