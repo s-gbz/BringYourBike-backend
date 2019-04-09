@@ -25,7 +25,9 @@ public class OwnerController {
 
     @PostMapping("/add-bike")
     public ResponseEntity<BikeResource> addBike(@RequestBody BikeResource resource) {
-        return new ResponseEntity<>(convertToResource(ownerService.addBike(convertToEntity(resource))), HttpStatus.CREATED);
+        Bike bike = convertToEntity(resource);
+        bike.setPin(ownerService.generatePin());
+        return new ResponseEntity<>(convertToResource(ownerService.addBike(bike)), HttpStatus.CREATED);
     }
 
     @PostMapping("/update-bike")
@@ -34,9 +36,9 @@ public class OwnerController {
         ownerService.updateBike(convertToEntity(resource));
     }
 
-    @GetMapping("/get-bike/{id}")
-    public ResponseEntity<BikeResource> getBike(@PathVariable Long id) {
-        return new ResponseEntity<>(convertToResource(ownerService.getOneBike(id)), HttpStatus.OK);
+    @GetMapping("/get-bike/{pin}")
+    public ResponseEntity<BikeResource> getBike(@PathVariable Long pin) {
+        return new ResponseEntity<>(convertToResource(ownerService.getBikeByPin(pin)), HttpStatus.OK);
     }
 
     private BikeResource convertToResource(Bike bike) {
